@@ -26,7 +26,7 @@ export default class RecipeBox extends React.Component{
 	render(){
 		return (			
 			<Accordion>
-				{ this.state.recipes.map( (recipe,index)=><RecipeItem recipe={recipe} key={index} /> ) }
+				{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} key={index} />)}
 			</Accordion>
 			);
 	}
