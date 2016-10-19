@@ -25,8 +25,6 @@ export default class RecipeItem extends React.Component{
 		e.stopPropagation();
 		this.setState({edit: false});
 		this.props.editRecipe(newRecipe, index);
-		console.log(newRecipe);
-		console.log(index);
 	}
 
 	delete(e){
