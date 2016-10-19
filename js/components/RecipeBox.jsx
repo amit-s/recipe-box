@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Panel } from 'react-bootstrap';
+import { PanelGroup, Accordion } from 'react-bootstrap';
 import RecipeItem from './RecipeItem.jsx';
 
 export default class RecipeBox extends React.Component{
@@ -19,15 +19,29 @@ export default class RecipeBox extends React.Component{
 					name: "Fish Tacos",
 					ingredients: ["Cod Filles", "Corn Tortillas", "Cabbage", "Mayonnaise", "Jalapeno", "Cheese"]
 				}
-			]
+			]		
 		};
+		this.editRecipe = this.editRecipe.bind(this);
+		this.deleteRecipe = this.deleteRecipe.bind(this);
+	}
+
+	editRecipe(newRecipe,index){
+		let recipes = this.state.recipes;
+		recipes[index] = newRecipe;
+		this.setState(recipes);
+	}
+
+	deleteRecipe(index){
+		let recipes = this.state.recipes;
+		recipes.splice(index,1);
+		this.setState({recipes});
 	}
 
 	render(){
 		return (			
-			<Accordion>
-				{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} key={index} />)}
-			</Accordion>
+			<PanelGroup>
+				{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
+			</PanelGroup>
 			);
 	}
 }

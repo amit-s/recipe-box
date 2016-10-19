@@ -1,4 +1,11 @@
 a:hover {
   text-decoration: none !important; }
 
+textarea {
+  height: 100px;
+  width: 300px; }
+
+#saveButton {
+  display: block; }
+
 /*# sourceMappingURL=style.css.map */
