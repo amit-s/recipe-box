@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RecipeBox from './components/RecipeBox.jsx';
 
-class App extends React.Component{
-	render(){
-		return <h1>Hello there folks</h1>
-	}
-}
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<RecipeBox />, document.getElementById("recipeBox"));
