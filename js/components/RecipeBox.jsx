@@ -28,7 +28,7 @@ export default class RecipeBox extends React.Component{
 	editRecipe(newRecipe,index){
 		let recipes = this.state.recipes;
 		recipes[index] = newRecipe;
-		this.setState(recipes);
+		this.setState({recipes});
 	}
 
 	deleteRecipe(index){
