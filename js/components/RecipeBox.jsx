@@ -1,6 +1,7 @@
 import React from 'react';
-import { PanelGroup, Accordion } from 'react-bootstrap';
+import { PanelGroup, Accordion, Button } from 'react-bootstrap';
 import RecipeItem from './RecipeItem.jsx';
+import RecipeForm from './RecipeForm.jsx';
 
 export default class RecipeBox extends React.Component{
 	constructor(props){
@@ -19,10 +20,13 @@ export default class RecipeBox extends React.Component{
 					name: "Fish Tacos",
 					ingredients: ["Cod Filles", "Corn Tortillas", "Cabbage", "Mayonnaise", "Jalapeno", "Cheese"]
 				}
-			]		
+			],
+			add: false
 		};
 		this.editRecipe = this.editRecipe.bind(this);
 		this.deleteRecipe = this.deleteRecipe.bind(this);
+		this.cancel = this.cancel.bind(this);
+		this.save = this.save.bind(this);
 	}
 
 	editRecipe(newRecipe,index){
@@ -37,11 +41,55 @@ export default class RecipeBox extends React.Component{
 		this.setState({recipes});
 	}
 
-	render(){
-		return (			
-			<PanelGroup>
-				{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
-			</PanelGroup>
+	add(){
+		this.setState({add: true});
+	}
+
+	cancel(){
+		this.setState({add: false});
+	}
+
+	save(e, newName, newIngredients){
+		let recipes = this.state.recipes;
+		recipes.push({
+			name: newName,
+			ingredients: newIngredients
+		});
+		this.setState({
+			recipes: recipes,
+			add: false
+		});
+	}
+
+	renderNormal(){
+		return (
+			<div>
+				<h1 className="text-center">Recipe Box</h1>
+				<Button onClick={()=>this.add()}>Add</Button>
+				<PanelGroup>
+					{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
+				</PanelGroup>
+			</div>
 			);
+	}
+
+	renderForm(){
+		return (
+			<div>
+				<h1 className="text-center">Recipe Box</h1>
+				<RecipeForm cancel={this.cancel} save={this.save} />
+				<PanelGroup>
+					{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
+				</PanelGroup>
+			</div>
+			);
+	}
+
+	render(){
+		if(this.state.add){
+			return this.renderForm();
+		}else{
+			return this.renderNormal();
+		}
 	}
 }
