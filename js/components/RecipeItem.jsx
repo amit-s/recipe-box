@@ -1,5 +1,6 @@
 import React from 'react';
 import { Panel, Button } from 'react-bootstrap';
+import RecipeForm from './RecipeForm.jsx';
 
 export default class RecipeItem extends React.Component{
 	constructor(props){
@@ -8,6 +9,8 @@ export default class RecipeItem extends React.Component{
 			open: false,
 			edit: false				
 		};
+		this.save = this.save.bind(this);
+		this.cancel = this.cancel.bind(this);
 	}
 
 	edit(e){
@@ -16,10 +19,10 @@ export default class RecipeItem extends React.Component{
 
 	}
 
-	save(e){
+	save(e, newName, newIngredients){
 		let newRecipe = {
-			name: this.refs.newName.value,
-			ingredients: this.refs.newIngredients.value.split(",")
+			name: newName,
+			ingredients: newIngredients
 		},
 		index = this.props.index;
 		e.stopPropagation();
@@ -32,6 +35,10 @@ export default class RecipeItem extends React.Component{
 		e.stopPropagation();
 		this.props.deleteRecipe(index);
 
+	}
+	cancel(e){
+		e.stopPropagation();
+		this.setState({edit:false});
 	}
 
 	renderNormal(){
@@ -49,13 +56,7 @@ export default class RecipeItem extends React.Component{
 		return(
 			<Panel collapsible expanded={this.state.open} header={this.props.recipe.name} eventKey={this.props.index} 
 			onClick={()=>this.setState({open: !this.state.open})} >
-				<div>Recipe Name</div>
-				<input ref="newName" defaultValue={this.props.recipe.name} placeholder="Enter recipe name" 
-				onClick={(e)=>e.stopPropagation()} />
-				<div>Ingredients</div>
-				<textarea ref="newIngredients" defaultValue={this.props.recipe.ingredients.join(",")} 
-				placeholder="Enter ingredients in a comma separated list" onClick={(e)=>e.stopPropagation()}></textarea>				
-				<Button id="saveButton" onClick={(e)=>this.save(e)}>Save</Button>
+				<RecipeForm defaultName={this.props.recipe.name} defaultIngredients={this.props.recipe.ingredients.join(", ")} cancel={this.cancel} save={this.save} />
 			</Panel>
 			);
 	}
@@ -68,3 +69,13 @@ export default class RecipeItem extends React.Component{
 		}
 	}
 }
+
+
+/*<div>Recipe Name</div>
+				<input ref="newName" defaultValue={this.props.recipe.name} placeholder="Enter recipe name" 
+				onClick={(e)=>e.stopPropagation()} />
+				<div>Ingredients</div>
+				<textarea ref="newIngredients" defaultValue={this.props.recipe.ingredients.join(",")} 
+				placeholder="Enter ingredients in a comma separated list" onClick={(e)=>e.stopPropagation()}></textarea><br />
+				<Button id="saveButton" onClick={(e)=>this.save(e)}>Save</Button>
+				<Button id="cancelButton" onClick={(e)=>this.cancel(e)}>Cancel</Button>*/

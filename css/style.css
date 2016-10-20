@@ -6,6 +6,9 @@ textarea {
   width: 300px; }
 
 #saveButton {
-  display: block; }
+  display: inline-block; }
+
+#cancelButton {
+  display: inline-block; }
 
 /*# sourceMappingURL=style.css.map */
