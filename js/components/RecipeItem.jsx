@@ -20,6 +20,10 @@ export default class RecipeItem extends React.Component{
 	}
 
 	save(e, newName, newIngredients){
+		if(!newName || newIngredients.length < 2){
+			this.setState({edit: false});
+			return;
+		}
 		let newRecipe = {
 			name: newName,
 			ingredients: newIngredients
@@ -46,7 +50,7 @@ export default class RecipeItem extends React.Component{
 			<Panel collapsible expanded={this.state.open} header={this.props.recipe.name} eventKey={this.props.index} 
 			onClick={()=>this.setState({open: !this.state.open})}>
 				{this.props.recipe.ingredients.map((ingredient, index)=><li key={index}>{ingredient}</li>)}
-				<Button onClick={(e)=>this.edit(e)}>Edit</Button>
+				<Button id="editButton" onClick={(e)=>this.edit(e)}>Edit</Button>
 				<Button onClick={(e)=>this.delete(e)}>Delete</Button>
 			</Panel>
 			);

@@ -1,3 +1,7 @@
+#recipeBox{
+	width: 50%;
+}
+
 a:hover{
 	text-decoration: none !important;
 }
@@ -5,12 +9,32 @@ a:hover{
 textarea{
 	height:100px;
 	width:300px;
+	resize: none;
 }
 
-#saveButton{
+#saveButton, #cancelButton, #editButton, #addButton{
 	display: inline-block;
+	margin: 5px;
 }
 
-#cancelButton{
-	display: inline-block
+#heading{
+	font-family: 'Exo', sans-serif;
 }
+
+h4.panel-title{
+	font:{
+		family: 'PT Sans', sans-serif;
+		size: 1.3em;
+	}
+}
+
+.panel-body li{
+	font:{
+		family: 'Roboto Condensed', sans-serif;
+		size: 1.2em;
+	}
+}
+
+/*#editButton{
+	margin: 10px;
+}*/

@@ -50,6 +50,11 @@ export default class RecipeBox extends React.Component{
 	}
 
 	save(e, newName, newIngredients){
+		if(!newName || newIngredients.length < 2){
+			this.setState({add: false});
+			return;
+		}
+		
 		let recipes = this.state.recipes;
 		recipes.push({
 			name: newName,
@@ -64,8 +69,8 @@ export default class RecipeBox extends React.Component{
 	renderNormal(){
 		return (
 			<div>
-				<h1 className="text-center">Recipe Box</h1>
-				<Button onClick={()=>this.add()}>Add</Button>
+				<h1 id="heading" className="text-center">Recipe Box</h1>
+				<Button id="addButton" onClick={()=>this.add()}>Add</Button>
 				<PanelGroup>
 					{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
 				</PanelGroup>
@@ -76,7 +81,7 @@ export default class RecipeBox extends React.Component{
 	renderForm(){
 		return (
 			<div>
-				<h1 className="text-center">Recipe Box</h1>
+				<h1 id="heading" className="text-center">Recipe Box</h1>
 				<RecipeForm cancel={this.cancel} save={this.save} />
 				<PanelGroup>
 					{this.state.recipes.map((recipe,index)=><RecipeItem recipe={recipe} editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} index={index} key={index} />)}
