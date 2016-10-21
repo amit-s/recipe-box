@@ -1,5 +1,9 @@
+$font-heading: 'Exo', sans-serif;
+$font-recipe-name: 'PT Sans', sans-serif;
+$font-recipe-ingredients: 'Roboto Condensed', sans-serif;
+
 #recipeBox{
-	width: 50%;
+	
 }
 
 a:hover{
@@ -18,23 +22,20 @@ textarea{
 }
 
 #heading{
-	font-family: 'Exo', sans-serif;
+	font-family: $font-heading;
 }
 
 h4.panel-title{
 	font:{
-		family: 'PT Sans', sans-serif;
+		family: $font-recipe-name;
 		size: 1.3em;
 	}
 }
 
 .panel-body li{
 	font:{
-		family: 'Roboto Condensed', sans-serif;
+		family: $font-recipe-ingredients;
 		size: 1.2em;
 	}
 }
 
-/*#editButton{
-	margin: 10px;
-}*/

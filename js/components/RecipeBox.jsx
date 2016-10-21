@@ -7,7 +7,7 @@ export default class RecipeBox extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			recipes: [
+			/*recipes: [
 				{
 					name: "Swedish Meatballs",
 					ingredients: ["Ground Pork", "Egg Yolks", "Bread", "Flour", "Broth", "Heavy Cream"]
@@ -18,9 +18,10 @@ export default class RecipeBox extends React.Component{
 				},
 				{
 					name: "Fish Tacos",
-					ingredients: ["Cod Filles", "Corn Tortillas", "Cabbage", "Mayonnaise", "Jalapeno", "Cheese"]
+					ingredients: ["Cod Fillets", "Corn Tortillas", "Cabbage", "Mayonnaise", "Jalapeno", "Cheese"]
 				}
-			],
+			],*/
+			recipes: this.props.recipes,
 			add: false
 		};
 		this.editRecipe = this.editRecipe.bind(this);
@@ -33,12 +34,14 @@ export default class RecipeBox extends React.Component{
 		let recipes = this.state.recipes;
 		recipes[index] = newRecipe;
 		this.setState({recipes});
+		localStorage.setItem("_amits_recipes", JSON.stringify(recipes));
 	}
 
 	deleteRecipe(index){
 		let recipes = this.state.recipes;
 		recipes.splice(index,1);
 		this.setState({recipes});
+		localStorage.setItem("_amits_recipes", JSON.stringify(recipes));
 	}
 
 	add(){
@@ -64,6 +67,7 @@ export default class RecipeBox extends React.Component{
 			recipes: recipes,
 			add: false
 		});
+		localStorage.setItem("_amits_recipes", JSON.stringify(recipes));
 	}
 
 	renderNormal(){
