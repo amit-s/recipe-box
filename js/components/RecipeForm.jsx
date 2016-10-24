@@ -8,9 +8,12 @@ export default class RecipeForm extends React.Component{
 		let inputStyle = {
 			marginBottom: 5
 		};
+		let boxStyle = {
+			marginLeft: 5
+		};
 		
 		return(
-			<div>
+			<div style={boxStyle}>
 				<div><b>Recipe Name</b></div>
 				<input style={inputStyle} ref="newName" onClick={(e)=>e.stopPropagation()} defaultValue={defaultName} placeholder="Enter recipe name"/>
 				<div><b>Ingredients</b></div>

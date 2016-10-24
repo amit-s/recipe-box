@@ -1,9 +1,21 @@
-$font-heading: 'Exo', sans-serif;
-$font-recipe-name: 'PT Sans', sans-serif;
-$font-recipe-ingredients: 'Roboto Condensed', sans-serif;
+@import '_variables';
 
-#recipeBox{
-	
+body{
+	background: {
+		image: url('../img/confectionary.png');		
+	};
+}
+
+#backgroundColorLayer{
+	background: $background-color-body;
+	height: 100vh;	
+}
+
+#recipeBox{	
+	margin: auto;
+	margin-top: 50px;
+	padding: 5px;
+	background: $background-color-recipe-box;
 }
 
 a:hover{
@@ -11,8 +23,8 @@ a:hover{
 }
 
 textarea{
-	height:100px;
-	width:300px;
+	height: 100px;
+	width: 270px;
 	resize: none;
 }
 
@@ -22,20 +34,38 @@ textarea{
 }
 
 #heading{
-	font-family: $font-heading;
+	font-family: $font-heading;	
 }
 
-h4.panel-title{
+.panel{
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+.panel-heading{
+	background: $background-color-recipe-heading !important;
+}
+
+h4.panel-title{	
 	font:{
 		family: $font-recipe-name;
 		size: 1.3em;
+	}	
+}
+
+.panel-body{
+	background: $background-color-recipe-body;
+	li{
+		font:{
+			family: $font-recipe-ingredients;
+			size: 1.2em;
+		}
 	}
 }
 
-.panel-body li{
-	font:{
-		family: $font-recipe-ingredients;
-		size: 1.2em;
-	}
+@media only screen and (min-width: 992px){
+	#recipeBox{
+		width: 50%;
+	}	
 }
-

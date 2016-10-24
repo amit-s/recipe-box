@@ -1,9 +1,22 @@
+body {
+  background-image: url("../img/confectionary.png"); }
+
+#backgroundColorLayer {
+  background: rgba(112, 61, 87, 0.3);
+  height: 100vh; }
+
+#recipeBox {
+  margin: auto;
+  margin-top: 50px;
+  padding: 5px;
+  background: rgba(112, 61, 87, 0.5); }
+
 a:hover {
   text-decoration: none !important; }
 
 textarea {
   height: 100px;
-  width: 300px;
+  width: 270px;
   resize: none; }
 
 #saveButton, #cancelButton, #editButton, #addButton {
@@ -13,12 +26,24 @@ textarea {
 #heading {
   font-family: "Exo", sans-serif; }
 
+.panel:hover {
+  cursor: pointer; }
+
+.panel-heading {
+  background: rgba(149, 113, 134, 0.6) !important; }
+
 h4.panel-title {
   font-family: "PT Sans", sans-serif;
   font-size: 1.3em; }
 
-.panel-body li {
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1.2em; }
+.panel-body {
+  background: #d9b8c4; }
+  .panel-body li {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2em; }
+
+@media only screen and (min-width: 992px) {
+  #recipeBox {
+    width: 50%; } }
 
 /*# sourceMappingURL=style.css.map */
